@@ -13,47 +13,47 @@ $HANDSEED
   5
 FFFF
   9
+$DIMASZ
+ 40
+2.5
+  9
 $GRIDUNIT
  10
 0.0
  20
 0.0
   9
-$DIMASZ
- 40
-2.5
-  9
 $DIMGAP
  40
 0.625
-  9
-$LUNITS
- 70
-2
-  9
-$AUPREC
- 70
-2
   9
 $SPLINESEGS
  70
 8
   9
-$DIMEXO
- 40
-0.625
+$AUPREC
+ 70
+2
+  9
+$LUNITS
+ 70
+2
   9
 $INSUNITS
  70
 4
   9
-$GRIDMODE
- 70
-1
+$DIMEXO
+ 40
+0.625
   9
 $DIMTXT
  40
 2.5
+  9
+$GRIDMODE
+ 70
+1
   9
 $LUPREC
  70
@@ -63,17 +63,17 @@ $DIMSTYLE
   2
 Standard
   9
-$PLIMMIN
- 10
-0.0
- 20
-0.0
-  9
 $PLIMMAX
  10
 210.0
  20
 297.0
+  9
+$PLIMMIN
+ 10
+0.0
+ 20
+0.0
   9
 $DIMEXE
  40
@@ -933,7 +933,7 @@ LAYER
 100
 AcDbSymbolTable
  70
-1
+4
   0
 LAYER
   5
@@ -945,13 +945,73 @@ AcDbLayerTableRecord
   2
 0
  70
-4
+0
  62
 7
   6
 CONTINUOUS
 370
 -3
+390
+F
+  0
+LAYER
+  5
+43
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+contour
+ 70
+0
+ 62
+7
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+44
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+axes
+ 70
+0
+ 62
+7
+  6
+CONTINUOUS
+370
+0
+390
+F
+  0
+LAYER
+  5
+45
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+dimensions
+ 70
+0
+ 62
+7
+  6
+CONTINUOUS
+370
+0
 390
 F
   0
@@ -1281,7 +1341,7 @@ ENTITIES
   0
 CIRCLE
   5
-43
+46
 100
 AcDbEntity
 100
@@ -1305,7 +1365,7 @@ ByLayer
   0
 LINE
   5
-44
+47
 100
 AcDbEntity
 100
@@ -1333,7 +1393,7 @@ ByLayer
   0
 LINE
   5
-45
+48
 100
 AcDbEntity
 100
@@ -1361,7 +1421,7 @@ ByLayer
   0
 LINE
   5
-46
+49
 100
 AcDbEntity
 100
@@ -1389,7 +1449,7 @@ ByLayer
   0
 CIRCLE
   5
-47
+4A
 100
 AcDbEntity
 100
@@ -1413,7 +1473,7 @@ ByLayer
   0
 LINE
   5
-48
+4B
 100
 AcDbEntity
 100
@@ -1441,7 +1501,7 @@ ByLayer
   0
 ARC
   5
-49
+4C
 100
 AcDbEntity
   8
@@ -1471,7 +1531,7 @@ AcDbArc
   0
 ARC
   5
-4A
+4D
 100
 AcDbEntity
   8
@@ -1501,7 +1561,7 @@ AcDbArc
   0
 LINE
   5
-4B
+4E
 100
 AcDbEntity
 100
@@ -1565,7 +1625,7 @@ E
   3
 AcDbVariableDictionary
 350
-4C
+4F
   0
 DICTIONARY
   5
@@ -2029,7 +2089,7 @@ Layout2
   0
 DICTIONARY
   5
-4C
+4F
 100
 AcDbDictionary
 281
@@ -2037,15 +2097,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-4E
+51
   3
 HIDETEXT
 350
-4D
+50
   0
 DICTIONARYVAR
   5
-4D
+50
 100
 DictionaryVariables
 280
@@ -2055,7 +2115,7 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-4E
+51
 100
 DictionaryVariables
 280
