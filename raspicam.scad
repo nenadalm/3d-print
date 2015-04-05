@@ -16,19 +16,36 @@ box();
 //bottom_part_print();
 //right_part_print();
 //front_part_print();
+//left_part_print();
 //rear_part_print();
 
 module box() {
 	rear_part();
 	front_part();
 	right_part();
-	translate([0, -case_height - thickness,0])
-		right_part();
+	left_part();
 	bottom_part();
 	top_part();
 }
 
 module rear_part_print() {
+	translate([0, 0, case_width + thickness])
+		rotate([0, 90, 0])
+			difference() {
+				rear_part();
+				left_part();
+				right_part();
+			}
+}
+
+module left_part_print() {
+	translate([0, 0, thickness])
+		rotate([90, 0, 0])
+			difference() {
+				left_part();
+				bottom_part();
+				top_part();
+			}
 }
 
 module right_part_print() {
@@ -57,7 +74,21 @@ module bottom_part_print() {
 }
 
 module rear_part() {
-	front_part();
+	height = 5;
+	translate([case_width, -2 * thickness, -thickness])
+		rotate([90, 0, 90]) {
+			difference() {
+				round_cube([case_height + 4 * thickness, case_depth + 4 * thickness, thickness], case_radius);
+				translate([0, case_depth - height / 4 - height, 0]) {
+					translate([thickness + case_height + thickness, 2 * thickness, 0])
+						cube([thickness, height / 4 + 2, thickness]);
+					translate([thickness, 2 * thickness, 0])
+						cube([thickness, height / 4, thickness + 10]);
+				}
+				translate([2 * thickness + ((case_height - 52) / 2), 2 * thickness + 2.2, -2])
+					cube([52, 16, thickness + 4]);
+			}
+		}
 }
 
 module front_part() {
@@ -89,6 +120,62 @@ module top_part() {
 		translate([case_width - width - offset, - thickness + case_height, 0])
 			round_cube([width, thickness * 2, thickness], case_radius);
 	}
+}
+
+module left_part() {
+	width = 10;
+	height = 5;
+	offset = 5;
+	radius = 2.5;
+
+	translate([0, 0, -thickness])
+		rotate([90, 0, 0]) {
+			difference() {
+				union() {
+					round_cube([case_width, case_depth + thickness * 4, thickness], case_radius);
+					translate([-width / 2, offset, 0])
+						difference() {
+							round_cube([width, height, thickness], radius);
+							translate([width / 2 - thickness, 0, 0])
+								cube([thickness, height / 4, thickness]);
+						}
+					translate([case_width -width / 2, offset, 0])
+						difference() {
+							round_cube([width, height, thickness], radius);
+							translate([width / 2, 0, 0])
+								cube([thickness, height / 4, thickness]);
+						}
+					translate([-width / 2, case_depth + thickness * 2 - offset, 0])
+						difference()  {
+							round_cube([width, height, thickness], radius);
+							translate([width / 2 - thickness, height - height / 4, 0])
+								cube([thickness, height / 4, thickness]);
+						}
+					translate([case_width -width / 2, case_depth + thickness * 2 - offset, 0])
+						difference()  {
+							round_cube([width, height, thickness], radius);
+							translate([width / 2, height - height / 4, 0])
+								cube([thickness, height / 4, thickness]);
+						}
+				}
+				translate([case_width -width / 2, offset, 0]) {
+					translate([0, height / 2.5, 0])
+						cube([width, height / 5, thickness]);
+					rotate([0, 0, 90])
+						translate([1 - height / 2 - offset + 3 * (height / 5), -height / 5, 0])
+							cube([-1 + height / 2 + offset, height / 5, thickness]);
+				}
+				translate([6, 2 * thickness + 2.2 + raspi_thickness, 0])
+					cube([case_width - 25 - 6, 7, thickness]);
+				translate([-width / 2, offset, 0]) {
+					translate([0, height / 2.5, 0])
+						cube([width, height / 5, thickness]);
+					rotate([0, 0, 90])
+						translate([1 - height / 2 - offset + 3 * (height / 5), -width, 0])
+							cube([-1 + height / 2 + offset - height / 5, height / 5, thickness]);
+				}
+			}
+		}
 }
 
 module right_part() {
