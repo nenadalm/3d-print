@@ -18,6 +18,7 @@ box();
 //front_part_print();
 //left_part_print();
 //rear_part_print();
+//top_part_print();
 
 module box() {
 	rear_part();
@@ -26,6 +27,11 @@ module box() {
 	left_part();
 	bottom_part();
 	top_part();
+}
+
+module top_part_print() {
+	translate([0, 0, -case_depth - thickness])
+		top_part();
 }
 
 module rear_part_print() {
@@ -108,8 +114,18 @@ module top_part() {
 	width = 20;
 	offset = 10;
 
+	switcher_width = 45;
+	switcher_height = 42;
+	switcher_board_thickness = 1.6;
+	switcher_margin_bottom = 2.2;
+	parts_depth = 9;
+
 	translate ([0, 0, case_depth + thickness]) {
-		round_cube([case_width, case_height, thickness], case_radius);
+		difference() {
+			round_cube([case_width, case_height, thickness], case_radius);
+			translate([11, switcher_height + 2 * thickness, 0])
+				cube([switcher_width + 2 * thickness, 4, thickness]);
+		}
 
 		translate([offset, - thickness, 0])
 			round_cube([width, thickness * 2, thickness], case_radius);
@@ -119,6 +135,23 @@ module top_part() {
 			round_cube([width, thickness * 2, thickness], case_radius);
 		translate([case_width - width - offset, - thickness + case_height, 0])
 			round_cube([width, thickness * 2, thickness], case_radius);
+
+		translate([11, 0, thickness]) {
+			difference() {
+				cube([2 * thickness + switcher_width, 2 * thickness + switcher_height, switcher_margin_bottom + switcher_board_thickness]);
+				translate([thickness, thickness, 0])
+					cube([switcher_width, switcher_height, switcher_margin_bottom + switcher_board_thickness]);
+			}
+
+			translate([thickness, thickness, 0]) {
+				linear_extrude(thickness) {
+					polygon([[0, 0], [0, 5], [5, 0]]);
+					polygon([[0, switcher_height], [0, switcher_height - 5], [5, switcher_height]]);
+					polygon([[switcher_width, 0], [switcher_width, 5], [switcher_width - 5, 0]]);
+					polygon([[switcher_width, switcher_height], [switcher_width - 5, switcher_height], [switcher_width, switcher_height - 5]]);
+				}
+			}
+		}
 	}
 }
 
