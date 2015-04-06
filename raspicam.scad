@@ -19,6 +19,25 @@ box();
 //left_part_print();
 //rear_part_print();
 //top_part_print();
+//cam_holder();
+
+module cam_holder() {
+	depth = 3;
+	width = 14.15;
+	height = 14.15;
+	hole_d = 7.45;
+	hole_r = hole_d / 2;
+
+	lens_width = 7.9;
+	lens_height = 7.9;
+	lens_depth = 5.25;
+
+	difference() {
+		cube([width, height, lens_depth]);
+		translate([width / 2 - lens_width / 2, height / 2 - lens_height / 2, 0])
+			cube([lens_width, lens_height, lens_depth]);
+	}
+}
 
 module box() {
 	rear_part();
