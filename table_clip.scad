@@ -6,8 +6,11 @@ height = 39;
 width = 11;
 thickness =2;
 
-base();
-spring();
+translate([0, 0, width])
+    rotate([0, 90, 0]) {
+        base();
+        spring();
+    }
 
 module base() {
     length = height * 2 - thickness;
