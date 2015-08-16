@@ -1,20 +1,21 @@
 table_thickness = 17;
-spring_z_position = 14;
-top_overlap = 1;
-
 height = 39;
 width = 11;
 thickness =2;
+spring_stretch = 3;
+spring_angle = -60;
+
+spring_z_position = table_thickness - spring_stretch;
+
 
 translate([0, 0, width])
     rotate([0, 90, 0]) {
-        base();
-        spring();
+        base(angle = spring_angle);
+        spring(angle = spring_angle);
     }
 
-module base() {
+module base(angle) {
     length = height * 2 - thickness;
-    angle = -60;
     cartesian = polar_to_cartesian(length, angle);
     x2_before_translate = polar_to_cartesian(length, angle);
     s2 = [x2_before_translate[0], x2_before_translate[1] + height - table_thickness];
@@ -26,9 +27,8 @@ module base() {
         cube([width, thickness, table_thickness + spring_z + spring_z_position]);
 }
 
-module spring() {
+module spring(angle) {
     length = height * 2 - thickness;
-    angle = -60;
     cartesian = polar_to_cartesian(length, angle);
     x2_before_translate = polar_to_cartesian(length, angle);
     s2 = [x2_before_translate[0], x2_before_translate[1] + height - table_thickness];
@@ -36,15 +36,14 @@ module spring() {
     spring_h = abs(height - table_thickness - height - spring_z);
     
     translate([0, 0, -spring_z - spring_z_position]) {
-        spring_first_part();
-        spring_second_part();
-        spring_third_part();
+        spring_first_part(angle = angle);
+        spring_second_part(angle = angle);
+        spring_third_part(angle = angle);
     }
 }
 
-module spring_third_part() {
+module spring_third_part(angle) {
     length = height * 2 - thickness;
-    angle = -60;
     cartesian = polar_to_cartesian(length, angle);
     x2_before_translate = polar_to_cartesian(length, angle);
     s2 = [x2_before_translate[0], x2_before_translate[1] + height - table_thickness];
@@ -54,23 +53,22 @@ module spring_third_part() {
     dx = abs(x1 - s2[0]);
 
     intersection() {
-    spring_second_cylinder();
+    spring_second_cylinder(angle = angle);
 
     translate([0, dx, -table_thickness])
             cube([width, height - dx, spring_h]);
     }
 }
 
-module spring_second_part() {
+module spring_second_part(angle) {
     intersection() {
         spring_first_cylinder();
-        spring_second_cylinder();
+        spring_second_cylinder(angle);
     }
 }
 
-module spring_first_part() {
+module spring_first_part(angle) {
     length = height * 2 - thickness;
-    angle = -60;
     cartesian = polar_to_cartesian(length, angle);
     x2_before_translate = polar_to_cartesian(length, angle);
     s2 = [x2_before_translate[0], x2_before_translate[1] + height - table_thickness];
@@ -90,9 +88,8 @@ module spring_first_cylinder() {
         spring_cylinder();
 }
 
-module spring_second_cylinder() {
+module spring_second_cylinder(angle) {
     length = height * 2 - thickness;
-    angle = -60;
     cartesian = polar_to_cartesian(length, angle);
 
     translate([0, cartesian[0], cartesian[1]])
