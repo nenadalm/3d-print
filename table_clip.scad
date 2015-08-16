@@ -53,9 +53,8 @@ module spring_third_part(angle) {
     dx = abs(x1 - s2[0]);
 
     intersection() {
-    spring_second_cylinder(angle = angle);
-
-    translate([0, dx, -table_thickness])
+        spring_second_cylinder(angle = angle);
+        translate([0, dx, -table_thickness])
             cube([width, height - dx, spring_h]);
     }
 }
