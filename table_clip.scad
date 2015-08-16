@@ -7,6 +7,7 @@ width = 11;
 thickness = 2;
 spring_stretch = 3;
 spring_angle = -60;
+angle = 0;
 // end parameters
 
 spring_z_position = table_thickness - spring_stretch;
@@ -17,10 +18,16 @@ x2_before_translate = polar_to_cartesian(length, spring_angle);
 s2 = [x2_before_translate[0], x2_before_translate[1] + height - table_thickness];
 spring_z = s2[1] + height;
 
-cube([thickness, height, width]);
-cube([table_thickness + spring_z + spring_z_position, thickness, width]);
+base_height = table_thickness + spring_z + spring_z_position;
+c = base_height / cos(angle);
+a  = sqrt(c * c - base_height * base_height);
+spring_dir = angle < 0 ? -1 : 1;
 
-translate([table_thickness + spring_z + spring_z_position + thickness, 0, 0])
+cube([thickness, height, width]);
+rotate([0, 0, angle])
+    cube([c, thickness, width]);
+
+translate([base_height + thickness, a * spring_dir, 0])
     rotate([0, 180, 0])
         rotate([0, 90, 0])
             spring(
