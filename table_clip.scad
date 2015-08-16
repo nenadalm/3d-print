@@ -7,12 +7,10 @@ spring_angle = -60;
 
 spring_z_position = table_thickness - spring_stretch;
 
-
-translate([0, 0, width])
-    rotate([0, 90, 0]) {
-        base(angle = spring_angle);
+base(angle = spring_angle);
+rotate([0, 180, 0])
+    rotate([0, 90, 0])
         spring(angle = spring_angle);
-    }
 
 module base(angle) {
     length = height * 2 - thickness;
@@ -22,9 +20,8 @@ module base(angle) {
     spring_z = s2[1] + height;
     spring_h = abs(height - table_thickness - height - spring_z);
 
-    cube([width, height, thickness]);
-    translate([0, 0, -table_thickness - spring_z - spring_z_position])
-        cube([width, thickness, table_thickness + spring_z + spring_z_position]);
+    cube([thickness, height, width]);
+    cube([table_thickness + spring_z + spring_z_position, thickness, width]);
 }
 
 module spring(angle) {
@@ -35,7 +32,7 @@ module spring(angle) {
     spring_z = s2[1] + height;
     spring_h = abs(height - table_thickness - height - spring_z);
     
-    translate([0, 0, -spring_z - spring_z_position]) {
+    translate([0, 0, -spring_z - spring_z_position - thickness]) {
         spring_first_part(angle = angle);
         spring_second_part(angle = angle);
         spring_third_part(angle = angle);
