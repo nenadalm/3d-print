@@ -42,6 +42,9 @@ xx = -(n[1] * yy - cc) / n[0];
 yy2 = yy + edge_over;
 xx2 = -(n[1] * yy2 - cc) / n[0];
 
+translate([-edge_over, 0, 0])
+    cube([edge_over, edge_over_length + xx + thickness, width]);
+
 difference() {
     cube([thickness, height, width]);
     union() {
