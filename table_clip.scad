@@ -9,7 +9,7 @@ spring_stretch = 3;
 spring_angle = -60;
 angle = -19;
 edge_over = 1.5;
-edge_over_length = 12;
+edge_over_length = 11.4;
 // end parameters
 
 spring_z_position = table_thickness - spring_stretch;
