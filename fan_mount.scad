@@ -19,27 +19,34 @@ w = hole_w + thickness * 2;
 dx = (fan_d2 - fan_d1) / 2;
 h = 10 + dx;
 
-difference() {
-    translate([-w / 2, fan_d2 / 2 - dx, 0])
-        cube([w, h, thickness]);
-    translate([-hole_w / 2, fan_d2 / 2 - dx, 0])
-        cube([hole_w, h, thickness]);
-    translate([-w / 2, fan_d2 / 2 + h - screw - dx, thickness / 2])
-        rotate([0, 90, 0])
-            cylinder(d = screw, h = w);
+mount();
+fan_holder();
+
+module mount() {
+    difference() {
+        translate([-w / 2, fan_d2 / 2 - dx, 0])
+            cube([w, h, thickness]);
+        translate([-hole_w / 2, fan_d2 / 2 - dx, 0])
+            cube([hole_w, h, thickness]);
+        translate([-w / 2, fan_d2 / 2 + h - screw - dx, thickness / 2])
+            rotate([0, 90, 0])
+                cylinder(d = screw, h = w);
+    }
 }
 
-difference() {
+module fan_holder() {
     difference() {
-        cylinder(d = fan_d2, h = thickness);
-        cylinder(d = fan_d1, h = thickness);
+        difference() {
+            cylinder(d = fan_d2, h = thickness);
+            cylinder(d = fan_d1, h = thickness);
+        }
+
+        translate([-fan_screw_x, fan_screw_y, 0]) 
+            cylinder(d = fan_screw_d, h = thickness);    
+        translate([fan_screw_x, fan_screw_y, 0])
+                cylinder(d = fan_screw_d, h = thickness);
+
+        translate([-fan_d2 / 2, -fan_d2 + fan_screw_y - screw * 2, 0])
+            cube([fan_d2, fan_d2, thickness]);
     }
-
-    translate([-fan_screw_x, fan_screw_y, 0]) 
-        cylinder(d = fan_screw_d, h = thickness);    
-    translate([fan_screw_x, fan_screw_y, 0])
-            cylinder(d = fan_screw_d, h = thickness);
-
-    translate([-fan_d2 / 2, -fan_d2 + fan_screw_y - screw * 2, 0])
-        cube([fan_d2, fan_d2, thickness]);
 }
