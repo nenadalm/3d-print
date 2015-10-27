@@ -66,10 +66,19 @@ module platform(d) {
 }
 
 module platform_substracted_sector(r, angle) {
-    difference() {
-        platform_sector(r, angle);
-        platform_sector(r - thickness, angle);
-    }
+    A = cartesian_from_polar(length = r, angle = 0);
+    B = cartesian_from_polar(length = r, angle = angle);
+    r2 = r - thickness;
+    C = cartesian_from_polar(length = r2, angle =0);
+    D = cartesian_from_polar(length = r2, angle = angle);
+
+    linear_extrude(height = grille_fill_h)
+        polygon(points = [
+            B,
+            A,
+            C,
+            D,
+        ]);
 }
 
 module platform_sector(r, angle) {
