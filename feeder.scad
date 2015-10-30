@@ -1,13 +1,12 @@
-//12*14
-
 $fn = 32;
 
 thickness = 1;
 
-feeder_w = 20;
+feeder_w = 41;
 feeder_h = 50;
 
 grille_fill_h = 2;
+grille_space_h = 4;
 
 feeder_fills_count = 11;
 cover_count = 5;
@@ -35,11 +34,11 @@ module in_between_platform() {
 
     for (i = [0:chunks - 1]) {
         rotate([0, 0, angle * i])
-            in_between_platform_part();
+            in_between_platform_part(h = grille_space_h);
     }
 }
 
-module in_between_platform_part() {
+module in_between_platform_part(h = grille_fill_h) {
     r = feeder_w / 2;
     angle = 360 / chunks;
     length = feeder_w * sin (angle / 2);
@@ -47,10 +46,10 @@ module in_between_platform_part() {
     vector = cartesian_from_polar(length = r, angle = angle);
     
     difference () {
-        platform_substracted_sector(r = r, angle = angle);
+        platform_substracted_sector(r = r, angle = angle, h = h);
         rotate([0, 0, angle / 2 - 90])
                 translate([-length / 2 + thickness, v - thickness, 0])
-                    cube([length - thickness * 2, thickness, grille_fill_h]);
+                    cube([length - thickness * 2, thickness, h]);
     }
 
 }
@@ -65,14 +64,14 @@ module platform(d) {
     }
 }
 
-module platform_substracted_sector(r, angle) {
+module platform_substracted_sector(r, angle, h = grille_fill_h) {
     A = cartesian_from_polar(length = r, angle = 0);
     B = cartesian_from_polar(length = r, angle = angle);
     r2 = r - thickness;
     C = cartesian_from_polar(length = r2, angle =0);
     D = cartesian_from_polar(length = r2, angle = angle);
 
-    linear_extrude(height = grille_fill_h)
+    linear_extrude(height = h)
         polygon(points = [
             B,
             A,
@@ -95,16 +94,17 @@ module platform_sector(r, angle) {
 }
 
 module feeder() {
-    for (i = [0:2:feeder_fills_count - 1])
-        translate([0, 0, i * grille_fill_h])
+    step = grille_space_h + grille_fill_h;
+    for (i = [1:1:feeder_fills_count / 2 - 1])
+        translate([0, 0, i * step])
             platform(d = feeder_w);
 
-    for (i = [1:2:feeder_fills_count - 1])
-        translate([0, 0, i * grille_fill_h])
+    for (i = [0:1:feeder_fills_count / 2 - 1])
+        translate([0, 0, i * step + grille_fill_h])
             in_between_platform();
 
     cover_platform(d = feeder_w);
-    translate([0, 0, (feeder_fills_count - 1) * grille_fill_h]) {
+    translate([0, 0, round(feeder_fills_count / 2 - 1) * step]) {
         cover_platform(d = feeder_w);
     }
 }
