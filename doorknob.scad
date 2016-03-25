@@ -27,6 +27,19 @@ translate([0, 0, washer_h + w[2]]) {
     knob();
 }
 
+module security_door_bottom_knob() {
+    knob_bottom();
+    translate([0, 0, d / 2]) {
+        difference() {
+            cylinder(d = 14.68 - tolerance * 2, h = 15);
+            translate([-2, -14.68 / 2, 15 - 6.62])
+                cube([4, 14.68, 6.62]);
+            translate([-hole[0] / 2, -hole[1] / 2, 0])
+                cube([hole[0], hole[1], 15]);
+        }
+}
+}
+
 module knob() {
     translate([0, 0, d / 2]) {
         rotate([180, 0, 0])
