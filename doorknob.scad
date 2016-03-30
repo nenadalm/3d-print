@@ -27,6 +27,10 @@ translate([0, 0, washer_h + w[2]]) {
     knob();
 }
 
+module security_door_knob_joiner() {
+    cube([hole[0] - tolerance * 2, hole[1] - tolerance * 2, 13]);
+}
+
 module security_door_bottom_knob() {
     knob_bottom();
     translate([0, 0, d / 2]) {
@@ -106,13 +110,18 @@ module washer() {
 
 module plate() {
     difference() {
-        translate([-w[0] / 2, 0, 0])
-            cube(w);
+        hull() {
+            translate([0, 15, 0])
+                cylinder(d = w[0], h = w[2]);
+            translate([0, w[1] - 10, 0])
+                cylinder(d = w[0], h = w[2]);
+        }
+
         translate([0, 40, 0])
             cylinder(d = washer_d + tolerance * 2, h = w[2]);
 
         // bolts
-        translate([0, 10, 0]) {
+        translate([0, 15, 0]) {
             translate([0, 0, w[2] - 2.26])
                 cylinder(d1 = 4, d2 = 8, h = 2.26);
             cylinder(d1 = 3,  d2 = 4, h = w[2] - 2.26);
