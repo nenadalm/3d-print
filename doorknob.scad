@@ -1,5 +1,14 @@
+/*
+ * Print settings:
+ * ===============
+ *
+ * knob:
+ * - infill: honeycomb 15%
+ * - plate: rectilinear 5%
+ *
+ */
+
 $fn = 32;
-//6, 4
 tolerance = 0.2;
 
 // doorknob
@@ -33,15 +42,16 @@ module security_door_knob_joiner() {
 
 module security_door_bottom_knob() {
     knob_bottom();
-    translate([0, 0, d / 2]) {
+    manifold_fix = 1; // slic3r does weird stuff without this
+    translate([0, 0, d / 2 - manifold_fix]) {
         difference() {
-            cylinder(d = 14.68 - tolerance * 2, h = 15);
-            translate([-2, -14.68 / 2, 15 - 6.62])
+            cylinder(d = 14.68 - tolerance * 2, h = 15 + manifold_fix);
+            translate([-2, -14.68 / 2, 15 - 6.62 + manifold_fix])
                 cube([4, 14.68, 6.62]);
             translate([-hole[0] / 2, -hole[1] / 2, 0])
-                cube([hole[0], hole[1], 15]);
+                cube([hole[0], hole[1], 15 + manifold_fix]);
         }
-}
+    }
 }
 
 module knob() {
@@ -121,16 +131,10 @@ module plate() {
             cylinder(d = washer_d + tolerance * 2, h = w[2]);
 
         // bolts
-        translate([0, 15, 0]) {
-            translate([0, 0, w[2] - 2.26])
-                cylinder(d1 = 4, d2 = 8, h = 2.26);
-            cylinder(d1 = 3,  d2 = 4, h = w[2] - 2.26);
-        }
-        translate([0, w[1] - 10, 0]) {
-            translate([0, 0, w[2] - 2.26])
-               cylinder(d1 = 4, d2 = 8, h = 2.26);
-            cylinder(d1 = 3,  d2 = 4, h = w[2] - 2.26);
-        }
+        translate([0, 15, 0])
+            cylinder(d1 = 3, d2 = 9, h = w[2]);
+        translate([0, w[1] - 10, 0])
+            cylinder(d1 = 3, d2 = 9, h = w[2]);
 
         // key
         translate([0, 7 / 2 + 40 + 65.5, 0])
