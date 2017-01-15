@@ -12,16 +12,17 @@ raspi_thickness = 1.3;
 case_depth = 22;
 case_margin = 10;
 
-box();
+//box();
 //bottom_part_print();
 //right_part_print();
 //front_part_print();
 //left_part_print();
 //rear_part_print();
 //top_part_print();
-//cam_holder();
+cam_holder();
 
 module cam_holder() {
+    tolerance = 0.6;
 	depth = 3;
 	width = 14.15;
 	height = 14.15;
@@ -34,8 +35,9 @@ module cam_holder() {
 
 	difference() {
 		cube([width, height, lens_depth]);
-		translate([width / 2 - lens_width / 2, height / 2 - lens_height / 2, 0])
-			cube([lens_width, lens_height, lens_depth]);
+        lens_hole = [lens_width + tolerance * 2, lens_height + tolerance * 2, lens_depth];
+		translate([width / 2 - lens_hole[0] / 2, height / 2 - lens_hole[1] / 2, 0])
+			cube(lens_hole);
 	}
 }
 
