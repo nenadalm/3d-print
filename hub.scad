@@ -2,7 +2,7 @@
 bearing_d = 22;
 bearing_h = 7;
 bearingHole_d = 8;
-spool_d = 32;
+spool_d = 51; //32, 51
 spool_h = 86;
 // endparams
 
