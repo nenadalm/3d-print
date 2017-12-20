@@ -19,12 +19,25 @@ inner_stuff_w = 6;
 
 filter();
 translate([0, 0, height - 1.65])
-    top_ring();
+    top_part();
 
-module top_ring() {
+// top_part positioned so that it can be printed
+//translate([0, 0, 10.4])
+//    rotate([180, 0, 0])
+//        top_part();
+
+module top_part() {
     difference() {
-        cylinder(d = outer_d + 4.2, h = 1.65);
-        cylinder(d = outer_d + tolerance * 2, h = 1.65);
+        union() {
+            translate([0, 0, 9])
+                cylinder(d = 76, h = 1.4);
+            difference() {
+                cylinder(d = 72, h = 9);
+                cylinder(d = outer_d - thickness * 2, h = 9);
+            }
+        }
+        cylinder(d = outer_d - thickness * 2, h = 10.4);
+        cylinder(d = outer_d + tolerance * 2, h = 5);
     }
 }
 
