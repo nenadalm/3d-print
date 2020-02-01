@@ -1,13 +1,16 @@
 /**
  * Print settings:
  *
- * infill: 50%
+ * infill: 100%
+ *
+ * Assembly:
+ * - inner hole needs to be enlarged on lathe
  */
 
 $fn = 64;
 
-outer_d = 81.8;
-inner_d = 25.6;//25;
+outer_d = 82.8;
+inner_d = 23.7;//25;
 base_height = 20;
 
 other_gear_d = 21.5;
@@ -139,8 +142,6 @@ module lock() {
         cylinder(d = lock_outer_d, h = lock_h);
         cylinder(d = lock_inner_d, h = lock_h);
         lock_space();
-        rotate([0, 0, 90])
-            lock_space();
     }
 }
 
