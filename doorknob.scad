@@ -3,18 +3,18 @@
  * ===============
  *
  * knob:
- * - infill: honeycomb 15%
- * - plate: rectilinear 5%
+ * - infill: gyroid 20%, 4 perimeters
+ * - plate: gyroid 20%
  *
  */
 
 $fn = 32;
-tolerance = 0.2;
+tolerance = 0.07;
 
 // doorknob
 hole = [7.95 + tolerance * 2, 7.95 + tolerance * 2, 33];
 d = 50;
-cut = d/30;
+cut = d/17;
 holder_d = 17;
 holder_h = 6;
 
@@ -35,6 +35,11 @@ translate([0, 0, washer_h + w[2]]) {
         washer();
     knob();
 }
+
+//knob_bottom();
+//knob();
+//plate();
+//washer();
 
 module security_door_knob_joiner() {
     cube([hole[0] - tolerance * 2, hole[1] - tolerance * 2, 13]);
