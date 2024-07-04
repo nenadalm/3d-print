@@ -1,29 +1,22 @@
-use <lib/spring.scad>
+use <spring.scad>
+
+$fn = 32;
 
 // start parameters
+amplitude = 11;
 table_thickness = 17;
 height = 39;
 width = 11;
 thickness = 2;
 spring_stretch = 3;
-spring_angle = -60;
 angle = -19;
 edge_over = 1.5;
 edge_over_length = 11.4;
 // end parameters
 
-spring_z_position = table_thickness - spring_stretch;
+function polar_to_cartesian(length, angle) = [length * cos(angle), length * sin(angle)];
 
 length = height * 2 - thickness;
-cartesian = polar_to_cartesian(length, spring_angle);
-x2_before_translate = polar_to_cartesian(length, spring_angle);
-s2 = [x2_before_translate[0], x2_before_translate[1] + height - table_thickness];
-spring_z = s2[1] + height;
-
-base_height = table_thickness + spring_z + spring_z_position;
-c = base_height / cos(angle);
-a  = sqrt(c * c - base_height * base_height);
-spring_dir = angle < 0 ? -1 : 1;
 
 P = [0, 0];
 A = [0, thickness];
@@ -42,34 +35,35 @@ xx = -(n[1] * yy - cc) / n[0];
 yy2 = yy + edge_over;
 xx2 = -(n[1] * yy2 - cc) / n[0];
 
+spring_adj = polar_to_cartesian(thickness / 2, angle + 90);
+_b = table_thickness + amplitude - spring_stretch + thickness + thickness / 2;
+_c = _b / cos(angle);
+_a = sin(angle) * _c;
+
 translate([-edge_over, 0, 0])
     cube([edge_over, edge_over_length + xx + thickness, width]);
 
 difference() {
     cube([thickness, height, width]);
     union() {
-        translate([yy, xx, 0])
-            cube([edge_over, edge_over_length, width]);
-        linear_extrude(height = width)
-            polygon(points = [
-                [yy, xx],
-                [yy2, xx2],
-                [yy2, xx2 + xx - xx2 + 1]
-            ]);
+        translate([yy, xx, -1])
+            cube([edge_over + 1, edge_over_length, width + 2]);
+        translate([0, 0, -1])
+          linear_extrude(height = width + 2)
+              polygon(points = [
+                  [yy, xx],
+                  [yy2, xx2],
+                  [yy2 + 1, xx2],
+                  [yy2 + 1, xx2 + xx - xx2 + 1],
+                  [yy2, xx2 + xx - xx2 + 1],
+              ]);
     }
 }
 
 rotate([0, 0, angle])
-    cube([c, thickness, width]);
+    cube([_c  + polar_to_cartesian(thickness / 2, angle)[1], thickness, width]);
 
-translate([base_height + thickness, a * spring_dir, 0])
-    rotate([0, 180, 0])
-        rotate([0, 90, 0])
-            spring(
-                d = height * 2 - thickness * 2,
-                width = width,
-                angle = spring_angle,
-                thickness = thickness
-            );
-
-function polar_to_cartesian(length, angle) = [length * cos(angle), length * sin(angle)];
+translate([_b, _a + (thickness / sin(90 + angle)) / 2, 0])
+  rotate([0, 0, 90])
+      linear_extrude(width)
+        sine_wave(amplitude = amplitude, length = height, omega = 0.25, thickness = thickness);
