@@ -8,13 +8,19 @@ It started as a replacement for a door handle so that our dog couldn't open the 
 
 ## [Drawer handle](./drawer_handle.scad)
 
+<img alt="drawer handle" height="240" src="docs/drawer_handle.jpg">
+
 Replacement for broken handles on an older table.
 
 ## [Faucet adapter](./faucet_adapter.scad)
 
+<img alt="faucet adapter" height="240" src="docs/faucet_adapter.jpg">
+
 Since the wood around the faucet got a bit rotten, the faucet was sinking into the wood. Therefore, I've created this adapter, under which I placed a bit of rubber from old car medkit to prevent slipping and sealed it with sanitary silicone to prevent water getting under the adapter.
 
 ## [Helmet nut](./helmet_nut.scad)
+
+<img alt="helmet nut" height="240" src="docs/helmet_nut.jpg">
 
 I've lost the original nut somewhere, so I printed new one.
 
@@ -24,11 +30,15 @@ Old knobs were cracked and couldn't grip the rods anymore. These new ones work g
 
 ## [Knife handle](./knife_handle.scad)
 
+<img alt="knife handle" height="240" src="docs/knife_handle.jpg">
+
 Long time ago I received an old knife with handle made of some animal paw (deer?). But that broke off, so I was left with knife without handle.
 
 Image of similar knife I found on the internet: https://www.uton.cz/nuz-csla-vo-7/vo7-foto/
 
 ## [Lamp bulb holder](./lamp_bulb_holder.scad)
+
+<img alt="lamp bulb holder" height="240" src="docs/lamp_bulb_holder.jpg">
 
 Replacement for broken bulb holder.
 
