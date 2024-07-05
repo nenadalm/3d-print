@@ -2,6 +2,12 @@
 
 This repository is collection of printable objects on my prusa printer. Some of the objects are forked from other people (you can see details inside LICENSE file).
 
+## [Cleaver handle](./cleaver_handle.scad)
+
+<img alt="cleaver handle" height="240" src="docs/cleaver_handle.jpg">
+
+An old cleaver that was missing a handle.
+
 ## [Door knob](./doorknob.scad)
 
 It started as a replacement for a door handle so that our dog couldn't open the door leading to the outside/inside (as she never closed the door after going through), but was later used for many other doors inside.
