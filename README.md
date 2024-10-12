@@ -56,6 +56,6 @@ Replacement for broken bulb holder.
 
 Original gear broke after guarantee. Model: [ELIXO 500 3S RTS](https://www.somfy.cz/products/1216364/elixo-500-3s-rts).
 
-[Window stopper](./window_stopper.scad)
+## [Window stopper](./window_stopper.scad)
 
 <img alt="lamp bulb holder" height="240" src="docs/window_stopper.jpg">
