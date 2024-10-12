@@ -10,6 +10,8 @@ An old cleaver that was missing a handle.
 
 ## [Door knob](./doorknob.scad)
 
+<img alt="helmet nut" height="240" src="docs/doorknob.jpg">
+
 It started as a replacement for a door handle so that our dog couldn't open the door leading to the outside/inside (as she never closed the door after going through), but was later used for many other doors inside.
 
 ## [Drawer handle](./drawer_handle.scad)
@@ -32,6 +34,8 @@ I've lost the original nut somewhere, so I printed new one.
 
 ## [Igra hockey knob](./igra_hockey__knob.scad)
 
+<img alt="helmet nut" height="240" src="docs/igra_hockey_knob.jpg">
+
 Old knobs were cracked and couldn't grip the rods anymore. These new ones work great and have better grip with fingers.
 
 ## [Knife handle](./knife_handle.scad)
@@ -51,3 +55,7 @@ Replacement for broken bulb holder.
 ## [Somfy gear](./somfy_gear.scad)
 
 Original gear broke after guarantee. Model: [ELIXO 500 3S RTS](https://www.somfy.cz/products/1216364/elixo-500-3s-rts).
+
+[Window stopper](./window_stopper.scad)
+
+<img alt="lamp bulb holder" height="240" src="docs/window_stopper.jpg">
