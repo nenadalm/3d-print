@@ -26,6 +26,10 @@ Replacement for broken handles on an older table.
 
 Since the wood around the faucet got a bit rotten, the faucet was sinking into the wood. Therefore, I've created this adapter, under which I placed a bit of rubber from old car medkit to prevent slipping and sealed it with sanitary silicone to prevent water getting under the adapter.
 
+## [Flowerpot](./flowerpot.scad)
+
+<img alt="faucet adapter" height="240" src="docs/flowerpot.jpg">
+
 ## [Helmet nut](./helmet_nut.scad)
 
 <img alt="helmet nut" height="240" src="docs/helmet_nut.jpg">
