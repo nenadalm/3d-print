@@ -56,6 +56,12 @@ Image of similar knife I found on the internet: https://www.uton.cz/nuz-csla-vo-
 
 Replacement for broken bulb holder.
 
+## [Radius gauge](./radius_gauge.scad)
+
+<img alt="radius gauges" height="240" src="docs/radius_gauge.jpg">
+
+Gauges for radius measurement.
+
 ## [Somfy gear](./somfy_gear.scad)
 
 Original gear broke after guarantee. Model: [ELIXO 500 3S RTS](https://www.somfy.cz/products/1216364/elixo-500-3s-rts).
