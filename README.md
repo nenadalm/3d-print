@@ -20,6 +20,12 @@ It started as a replacement for a door handle so that our dog couldn't open the 
 
 Replacement for broken handles on an older table.
 
+## [Etager stand](./etager_stand.scad)
+
+<img alt="etager stand" height="240" src="docs/etager_stand.jpg">
+
+Replacement for missing etager stand.
+
 ## [Faucet adapter](./faucet_adapter.scad)
 
 <img alt="faucet adapter" height="240" src="docs/faucet_adapter.jpg">
