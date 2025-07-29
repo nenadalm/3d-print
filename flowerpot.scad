@@ -7,7 +7,7 @@
 $fn = 32;
 
 bowl_w = 180;
-bowl_h = 80;
+bowl_h = 80 + 19;
 bowl_depth = 25;
 
 thickness = 3;
