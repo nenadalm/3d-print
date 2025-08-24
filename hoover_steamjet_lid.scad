@@ -41,7 +41,7 @@ difference() {
   translate([0, 0, thickness + h2])
     cylinder(h = h, d = d3);
   for (i = [0:4]) {
-    coord = polar_to_cartesian(bolt_l, bolt_angle * i + 26);
+    coord = polar_to_cartesian(bolt_l, bolt_angle * i + 35);
     translate([coord[0], coord[1], thickness])
       cylinder(d = bolt_d, h = h);
   }
