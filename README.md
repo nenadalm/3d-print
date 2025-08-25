@@ -42,6 +42,12 @@ Since the wood around the faucet got a bit rotten, the faucet was sinking into t
 
 I've lost the original nut somewhere, so I printed new one.
 
+## [Hoover SteamJet lid](./hoover_steamjet_lid.scad)
+
+<img alt="Hoover SteamJet lid" height="240" src="docs/hoover_steamjet_lid.jpg">
+
+Old lid was cut in half as it was impossible to open, so new one was created.
+
 ## [Igra hockey knob](./igra_hockey__knob.scad)
 
 <img alt="helmet nut" height="240" src="docs/igra_hockey_knob.jpg">
