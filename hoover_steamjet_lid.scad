@@ -1,6 +1,10 @@
 /**
  * print settings:
  * - perimeters: 4
+ * - bottom solid layers: 4
+ *
+ * material: petg
+ * not material: pla (temperature issues)
  */
 
 $fn = 32;
