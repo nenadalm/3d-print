@@ -6,7 +6,8 @@ clearance = 0.07;
 loose_clearance = 0.14;
 
 //deck_size = [63, 89, 38]; // Star Realms
-deck_size = [61, 104, 10]; // german-suited
+//deck_size = [61, 104, 10]; // german-suited
+deck_size = [61, 86, 10]; // minecraft dungeons
 
 card_width = deck_size[0];
 card_height = deck_size[1];

@@ -2,6 +2,12 @@
 
 This repository is collection of printable objects on my prusa printer. Some of the objects are forked from other people (you can see details inside LICENSE file).
 
+## [Card box](./card_box.scad)
+
+Box for playing cards.
+
+<img alt="cleaver handle" height="240" src="docs/card_box.jpg">
+
 ## [Cleaver handle](./cleaver_handle.scad)
 
 <img alt="cleaver handle" height="240" src="docs/cleaver_handle.jpg">
