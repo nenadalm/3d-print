@@ -6,7 +6,7 @@ This repository is collection of printable objects on my prusa printer. Some of 
 
 Box for playing cards.
 
-<img alt="cleaver handle" height="240" src="docs/card_box.jpg">
+<img alt="card box" height="240" src="docs/card_box.jpg">
 
 ## [Cleaver handle](./cleaver_handle.scad)
 
