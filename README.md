@@ -2,6 +2,12 @@
 
 This repository is collection of printable objects on my prusa printer. Some of the objects are forked from other people (you can see details inside LICENSE file).
 
+## [Bed shelf](./bed_shelf.scad)
+
+Small shelf for the bed. Useful for e.g. putting a lamp on.
+
+<img alt="bed shelf" height="240" src="docs/bed_shelf.jpg">
+
 ## [Card box](./card_box.scad)
 
 Box for playing cards.
