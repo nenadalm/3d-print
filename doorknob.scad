@@ -28,19 +28,6 @@ washer_h = 1;
 s_d = d / 3;
 s_v = d;
 
-translate([0, -40, 0])
-    plate();
-translate([0, 0, washer_h + w[2]]) {
-    rotate([180, 0, 0])
-        washer();
-    knob();
-}
-
-//knob_bottom();
-//knob();
-//plate();
-//washer();
-
 module security_door_knob_joiner() {
     cube([hole[0] - tolerance * 2, hole[1] - tolerance * 2, 13]);
 }
@@ -166,3 +153,19 @@ module notch_part() {
                     circle(d = s_d);
 }
 
+translate([0, -40, 0])
+    plate();
+translate([0, 0, washer_h + w[2]]) {
+    rotate([180, 0, 0])
+        washer();
+    knob();
+}
+
+//knob_bottom();
+//knob_top();
+//knob();
+//plate();
+//washer();
+
+//security_door_bottom_knob();
+//security_door_knob_joiner();
